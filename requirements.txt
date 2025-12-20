@@ -1,0 +1,8 @@
+langchain
+langchain-google-genai
+sentence-transformers
+chromadb
+python-dotenv
+streamlit
+python-docx
+langchain-text-splitters
