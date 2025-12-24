@@ -21,9 +21,9 @@ TOP_K = 3
 
 class SimpleRAG:
     def __init__(self):
-        if not GOOGLE_API_KEY or GOOGLE_API_KEY == "your_api_key_here":
+        if not GOOGLE_API_KEY:
             raise ValueError(
-                "Please add your correct Google API key "
+                "add correct Google API key "
                 
             )
         self.embedding_model = None
@@ -34,7 +34,7 @@ class SimpleRAG:
     def load_document(self):
 
         if not DOCS_PATH.exists():
-            raise FileNotFoundError(f"Document not found: {DOCS_PATH}")
+            raise FileNotFoundError("Document not found:")
         
         doc = Document(DOCS_PATH)
         full_text = []
@@ -60,7 +60,6 @@ class SimpleRAG:
     def setup_embeddings(self):
         
         if self.embedding_model is None:
-            print(f"\nLoading embedding model...")
             self.embedding_model = SentenceTransformer(EMBEDDING_MODEL)
     
     def create_embeddings(self, chunks):
